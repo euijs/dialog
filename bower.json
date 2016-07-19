@@ -1,0 +1,18 @@
+{
+  "name": "dialog",
+  "description": "一个优雅又简单的弹出层组件",
+  "main": "./dist/index.js",
+  "authors": [
+    "eeve <eeveme@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

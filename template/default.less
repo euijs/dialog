@@ -1,0 +1,121 @@
+@dialog_width	:	200px;
+.eui_dialog_default_wrap{
+	visibility: visible;
+	* {
+		outline: none;
+		box-sizing: border-box;
+	}
+	&.hide{
+		display: none;
+	}
+	.left{
+		float: left;
+	}
+	.right{
+		float: right;
+	}
+	.cl{
+		clear: both;
+		overflow: hidden;
+		*zoom: 1;
+		&:after{
+			content: " ";
+		  display: block;
+		  height: 0;
+			clear: both;
+  		visibility: hidden;
+		}
+	}
+	.eui_dialog_default{
+		position: fixed;
+		min-width: @dialog_width;
+		background: #ffffff;
+		margin-left: -(@dialog_width * 0.5);
+		left: 50%;
+		top: 50%;
+		box-shadow: 2px 2px 10px #bbb;
+	}
+	@eui_dialog_header_height : 35px;
+	@eui_dialog_header_padding-lr : 10px;
+	@eui_dialog_header_padding-tb : 2px;
+	.eui_dialog_default_header{
+		height: @eui_dialog_header_height;
+		padding: @eui_dialog_header_padding-tb @eui_dialog_header_padding-lr;
+		background: #F1F1F1;
+		color: #666666;
+		> span{
+			display: inline-block;
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			width: 90%;
+		}
+		.eui_dialog_default_title{
+			//  行高 ＝ header的高度 － header上下padding的值
+			line-height: @eui_dialog_header_height - @eui_dialog_header_padding-tb * 2;
+	    overflow: hidden;
+		}
+	}
+	.eui_dialog_default_ops{
+		height: @eui_dialog_header_height;
+		position: absolute;
+		right: @eui_dialog_header_padding-lr;
+		top: 0;
+		> a {
+			color: #2d2c3b;
+			display: inline-block;
+			text-decoration: none;
+			text-align: center;
+			margin: 5px 0 5px 5px;
+			height: @eui_dialog_header_height - 10px;
+			line-height: @eui_dialog_header_height - 10px;
+		}
+		.eui_dialog_default_ops_close{
+			width: 20px;
+			&:hover{
+				color: #999;
+			}
+		}
+	}
+	.eui_dialog_default_content{
+		padding: 20px;
+		word-break: break-all;
+		overflow: hidden;
+		overflow-x: hidden;
+    overflow-y: auto;
+	}
+	.eui_dialog_default_action{
+		height: 40px;
+		padding: 0 10px 10px 10px;
+		text-align: right;
+		> button {
+			font-size: 14px;
+			color: #888;
+			min-width: 60px;
+			height: 30px;
+			border: none;
+			background: #F1F1F1;
+			margin-left: 5px;
+			cursor: pointer;
+			transition: background 0.2s;
+			border: 1px solid #DDDDDD;
+			&:hover{
+		    opacity: 0.9;
+				box-shadow: 2px 2px 4px #F1F1F1;
+			}
+			&:first-child{
+				background: #118DF0;
+				color: #fff;
+				border: none;
+			}
+		}
+	}
+	.eui_dialog_default_mask{
+    position: fixed;
+    background:rgba(0,0,0,0.2);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+	}
+}

@@ -1,0 +1,28 @@
+{
+  "name": "dialog",
+  "version": "1.0.0",
+  "description": "一个简单又优雅的弹出层组件",
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_ENV=development webpack --display-error-details --watch",
+    "start": "webpack --display-error-details",
+    "doc": "documentation build --lint true -o ./document/ -f html -p false -c documentation.yml",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "eeve <eeveme@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "file-loader": "^0.9.0",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "lodash": "^4.13.1",
+    "mocha": "^2.5.3",
+    "raw-loader": "^0.5.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1"
+  },
+  "dependencies": {
+    "component-dom": "^1.0.8"
+  }
+}
