@@ -1,0 +1,6 @@
+{
+  "name": "Dialog",
+  "tagline": "一个简单又优雅的弹出层组件",
+  "body": "# eui-dialog\r\n\r\n> 一个简单又优雅的弹出层组件\r\n\r\n## Scripts\r\n\r\n`npm start` : build all js bundles from `src/` to `dist/`\r\n\r\n`npm run dev` : build all js bundles from `src/` to `dist/` & start watch\r\n\r\n`npm run doc` : build document\r\n\r\n\r\n## Doc\r\n\r\n- [API](/document/index.html)\r\n\r\n## Thanks\r\n\r\n- [documentationjs/documentation](https://github.com/documentationjs/documentation)\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
