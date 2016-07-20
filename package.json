@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "一个简单又优雅的弹出层组件",
   "main": "index.js",
+  "keywords": [
+    "dialog",
+    "webpack dialog",
+    "eui-dialog",
+    "eui"
+  ],
   "scripts": {
     "dev": "NODE_ENV=development webpack --display-error-details --watch",
     "start": "webpack --display-error-details",
@@ -13,6 +19,7 @@
   "license": "MIT",
   "devDependencies": {
     "chai": "^3.5.0",
+    "css-loader": "^0.23.1",
     "file-loader": "^0.9.0",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
@@ -20,6 +27,7 @@
     "mocha": "^2.5.3",
     "raw-loader": "^0.5.1",
     "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
     "webpack": "^1.13.1"
   },
   "dependencies": {

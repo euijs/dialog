@@ -10,14 +10,14 @@ $(function(){
 		modal: false,
 		title: '温馨提示',
 		content: '<span class="ui-dialog-loading">Loading..</span>',
-		buttons: [ '确定支付' , '取消支付' , '放弃付款'],
+		buttons: [ '按钮1' , '按钮2' , '按钮3'],
 		callback: function(index, button){
 			[function(){
-				console.debug('确定支付');
+				console.debug('按钮1');
 			},function(){
-				console.debug('取消支付');
+				console.debug('按钮2');
 			},function(){
-				console.debug('放弃付款');
+				console.debug('按钮3');
 			}][index]();
 		}
 	});
@@ -62,9 +62,48 @@ $(function(){
 		d3.show();
 	});
 
+	var $btn1_3 = $('#btn1_3');
+	$btn1_3.on('click', function (){
+		var d3 = $dialog.open({
+			modal: false,
+			title: '温馨提示111',
+			content: 'hello dialog2',
+			buttons: [ '111' , '222' ],
+			callback: function(index, button){
+				if( index === 0 ){
+					console.debug('111');
+				} else {
+					console.debug('222');
+					return true;
+				}
+			}
+		});
+	});
+
 	var $btn2 = $('#btn2');
 	$btn2.on('click', function (){
 		d2.setContent('hello eui dialog');
+	});
+
+	var $btn3 = $('#btn3');
+	$btn3.on('click', function (){
+		d1.destroy();
+		delete d1;
+	});
+
+	var d4 = $dialog.open({
+		modal: false,
+		title: '温馨提示4',
+		content: 'hello dialog2',
+		buttons: [ '111' , '222' ],
+		callback: function(index, button){
+			if( index === 0 ){
+				console.debug('111');
+			} else {
+				console.debug('222');
+				return true;
+			}
+		}
 	});
 
 });

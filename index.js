@@ -9,8 +9,6 @@
  * 	});
  */
 var Dialog = function (options) {
-	// 此属性可知当前dialog对象是否处于打开状态
-	this.opening = false;
 	// 合并配置项， 最终使用this.options属性
 	this._initialize(options);
 	// 初始化HTML并挂载到文档树
@@ -23,6 +21,9 @@ var Events = require('./lib/events');
 Events.mixTo(Dialog);
 
 var fn = Dialog.fn = Dialog.prototype;
+
+// dialog是否处于打开状态
+fn.opening = false;
 
 /**
  * 对象属性混入
@@ -40,6 +41,9 @@ fn.mixin = Dialog.mixin = function(destination, source) {
   return destination;
 };
 
+// 将helper挂载到dialog的原型链上
+fn._ =  require('./lib/helper');
+
 // global config
 var Defaults = require('./lib/default');
 /**
@@ -55,8 +59,19 @@ Dialog.config = function(defaults){
 	return this;
 };
 
-// 将helper挂载到dialog的原型链上
-fn._ =  require('./lib/helper');
+/**
+ * 快速创建一个弹出框
+ * @param  {object} options 用户配置
+ * @return {object}         dialog instance
+ */
+Dialog.open = function(options){
+	var dialog = new Dialog(options);
+	// 关闭即销毁
+	dialog.on('close', function(){
+		dialog.destroy();
+	});
+	return dialog.show();
+};
 
 /**
  * 初始化配置信息
@@ -92,7 +107,7 @@ fn._mount = function(){
 		fixed: opt.fixed === true ? 'fixed' : 'absolute'
 	});
 	this._.appendHTML(html);
-	this.__key_ = instance_id;
+	this.__key__ = instance_id;
 	this.instance = this._.$(document.getElementById(instance_id));
 	this._initPrimaryElements();
 	this._bindEvent();
@@ -121,11 +136,6 @@ fn._initPrimaryElements = function(){
 	instance = null;
 }
 
-/**
- * 绑定基本事件，包括但不限于：关闭弹出框，模态框mask点击关闭，各按钮的点击事件
- * @private
- * @return {object} this
- */
 fn._bindEvent = function (){
 	var instance = this.instance;
 	if(!instance){
@@ -138,13 +148,13 @@ fn._bindEvent = function (){
 	//  关闭弹出框
 	instance.on('click', '.J_close', function(){
 		self.close();
-	});
+	}, false);
 
 	// 是否为模态框
 	if( this.options.modal !== true ){
 		instance.on('click', '.J_mask', function(){
 			self.close();
-		});
+		}, false);
 	}
 
 	// Action
@@ -155,7 +165,7 @@ fn._bindEvent = function (){
 		if ( close !== false ){
 			self.close();
 		}
-	});
+	}, false);
 
 	// resize
 	this._.addEvent(this._.el.window, 'resize', function(){
@@ -274,7 +284,7 @@ fn.close = function (){
 	if(close !== false){
 		this.instance.addClass('hide');
 		this.el.container.removeClass(this.options.animate);
-		// 标记为已经打开
+		// 标记为已经关闭
 		this.opening = false;
 		//  解锁滚动条
 		this._lock(false);
@@ -286,16 +296,20 @@ fn.close = function (){
 
 /**
  * 关闭并销毁弹出框
- * @return {object} this
  * @example
  * dialog.destroy();
  */
 fn.destroy = function (){
 	this.trigger('beforeDestroy');
-	// this.close();
-	console.log('TODO Destroy');
+	// 移除DOM节点
+	this.instance.remove();
+	// 销毁对象
+	for (var key in this) {
+		if (this.hasOwnProperty(key)) {
+			delete this[key];
+		}
+	}
 	this.trigger('destroyed');
-	return this;
 }
 
 /**

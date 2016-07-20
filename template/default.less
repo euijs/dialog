@@ -1,9 +1,14 @@
 @dialog_width	:	200px;
 .eui_dialog_default_wrap{
 	visibility: visible;
+	font-family: Helvetica, arial, sans-serif;
+	*,:after,:before {
+    box-sizing: border-box
+	}
 	* {
 		outline: none;
-		box-sizing: border-box;
+		padding: 0;
+		margin: 0;
 	}
 	&.hide{
 		display: none;
@@ -61,19 +66,23 @@
 		position: absolute;
 		right: @eui_dialog_header_padding-lr;
 		top: 0;
+		bottom: 0;
+		padding: 10px 0;
 		> a {
 			color: #2d2c3b;
 			display: inline-block;
 			text-decoration: none;
 			text-align: center;
-			margin: 5px 0 5px 5px;
-			height: @eui_dialog_header_height - 10px;
-			line-height: @eui_dialog_header_height - 10px;
+			margin-left: 5px;
 		}
 		.eui_dialog_default_ops_close{
-			width: 20px;
+			width: 15px;
+			height: 100%;
+	    -webkit-appearance: none;
+			font-weight: 700;
+			background: url(../template/close_btn.png) no-repeat 0 0;
 			&:hover{
-				color: #999;
+		    opacity: 0.3;
 			}
 		}
 	}
@@ -92,13 +101,14 @@
 			font-size: 14px;
 			color: #888;
 			min-width: 60px;
-			height: 30px;
+			height: 28px;
 			border: none;
 			background: #F1F1F1;
 			margin-left: 5px;
 			cursor: pointer;
 			transition: background 0.2s;
 			border: 1px solid #DDDDDD;
+			padding: 0 10px;
 			&:hover{
 		    opacity: 0.9;
 				box-shadow: 2px 2px 4px #F1F1F1;

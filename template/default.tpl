@@ -7,7 +7,7 @@
 			[: } :]
 		</div>
 		<div class="[:=theme:]_ops">
-			<a class="[:=theme:]_ops_close J_close" href="javascript:;">x</a>
+			<a class="[:=theme:]_ops_close J_close" href="javascript:;"></a>
 		</div>
 		<div class='[:=theme:]_content J_content' style='padding: [:=padding:];'>[:=content:]</div>
 		<div class='[:=theme:]_action'>

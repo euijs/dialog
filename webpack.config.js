@@ -48,7 +48,7 @@ var config = {
       ,{ test: /\.gif$/, loader: 'url?limit=' + embedFileSize + '&mimetype=image/gif' }
       ,{ test: /\.css$/, loader: 'style!css' }
       ,{ test: /\.tpl$/, loader: 'raw' }
-      ,{ test: /\.less$/, loader: 'style!raw!less' }
+      ,{ test: /\.less$/, loader: 'style!css!less' }
     ]
   },
   resolve: {
